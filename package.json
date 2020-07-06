@@ -1,0 +1,24 @@
+{
+  "name": "goaltracker",
+  "version": "1.0.0",
+  "description": "Simple goal track app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "*",
+    "body-parser": "*",
+    "mongojs": "*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KicKerBNU/goaltracker.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KicKerBNU/goaltracker/issues"
+  },
+  "homepage": "https://github.com/KicKerBNU/goaltracker#readme"
+}

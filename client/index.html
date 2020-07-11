@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GoalTracker</title>
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-min.js"></script>
+    <!-- CSS only -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body onload="getGoals()">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">GoalTracker</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </nav>
+
+    <div class="container">
+      <br />
+      <div class="row">
+        <div class="col-md-3 col-sm-3">
+          <input
+            data-bind="value: goalInputName, valueUpdate: 'keypress'"
+            type="text"
+            class="form-control"
+            id="name"
+            placeholder="Enter goal"
+          />
+        </div>
+        <div class="col-md-3 col-sm-3">
+          <select
+            data-bind="value: goalInputType, options:types, optionsCaption: 'Choose Type'"
+            id="type"
+            class="form-control"
+          ></select>
+        </div>
+        <div class="col-md-3 col-sm-3">
+          <input
+            data-bind="value: goalInputDeadline"
+            type="date"
+            class="form-control"
+            id="deadline"
+            placeholder="Enter goal"
+          />
+        </div>
+        <div class="col-md-3 col-sm-3">
+          <button
+            data-bind="click: addGoal, enable: goalInputName, visible: !isUpdate()"
+            class="btn btn-primary"
+          >
+            Add Goal
+          </button>
+
+          <button
+            data-bind="click: updateGoal, enable: goalInputName, visible: isUpdate"
+            class="btn btn-primary"
+          >
+            Update Goal
+          </button>
+
+          <button
+            data-bind="click: editSelected, enable:canEdit"
+            class="btn btn-info"
+          >
+            Edit
+          </button>
+
+          <button
+            data-bind="click: deleteSelected, enable: canEdit"
+            class="btn btn-danger"
+          >
+            Delete
+          </button>
+        </div>
+      </div>
+      <br />
+      <br />
+
+      <div class="row">
+        <div class="col-md-12">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Deadline</th>
+              </tr>
+            </thead>
+            <tbody data-bind="foreach: goals">
+              <tr>
+                <td>
+                  <input
+                    data-bind="value: $data, checked: $parent.selectedGoals"
+                    type="checkbox"
+                  />
+                </td>
+                <td data-bind="text: name"></td>
+                <td data-bind="text: type"></td>
+                <td data-bind="text: deadline"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>

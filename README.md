@@ -1,4 +1,4 @@
-# goaltracker
+# Goaltracker
 ```
 Keep track of your goals
 ```
